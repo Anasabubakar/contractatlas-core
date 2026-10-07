@@ -1,0 +1,21 @@
+ContractAtlas report: ContractAtlas upgradeable fixture on testnet
+Observed 2026-10-07T13:49:48.573Z at ledger 5071480 via https://soroban-testnet.stellar.org
+Manifest sha256 0c2a9379478cce9b8c4403f9ac6f1687decd5c3bfdbab08eabbf65872fd6367c
+Overall: INCOMPLETE  (match 1, drift 0, incomplete 1, unavailable 0)
+
+MATCH       Fixture A (artifact-mapped review) CADRVGSPFVDYWRABKTEVETRVCKIADNF4XCQC73OIJPJQZOHG7EPIQ3BD
+            live: wasm 42d30fff6be1…c7cc92   declared: 42d30fff6be1…c7cc92
+            [info] live_artifact_in_audit_scope: The live WASM hash equals a hash that at least one referenced audit lists as reviewed. This does not establish that the audit covered dependencies, configuration or privileged roles.
+            audit fixture-review-1 (Fictional fixture review (not an audit), 2026-10-07) lists the live artifact: https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/upgradeable-fixture/README.md
+INCOMPLETE  Fixture B (source-commit-only review) CD2FBDVYS6TBDZNJPRUBVEY7TNCFJX36QJ6KQCUHXWG4IFFSR7J2EIZH
+            live: wasm 42d30fff6be1…c7cc92   declared: 42d30fff6be1…c7cc92
+            [warning] audit_scope_unmapped_to_artifact: The referenced audits identify reviewed source only, not a WASM artifact. Without a reliable source-to-artifact mapping the live code's audit coverage is unresolved.
+            [info] declared_source_commit_unverified: A declared source commit is recorded but this tool does not rebuild source or verify it against the deployed WASM.
+            audit fixture-review-2 (Fictional fixture review (not an audit), 2026-10-07) does not list the live artifact: https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/upgradeable-fixture/README.md
+
+Limits of this report:
+  - A match means the live WASM hash equals a hash an audit lists as reviewed. It does not mean the audit covered dependencies, deployment configuration or privileged roles.
+  - Privileges, dependencies and limitations are declarations copied from the manifest. They are not verified by this tool.
+  - A source commit is not compared with deployed code. Without an artifact hash mapping, audit coverage stays unresolved.
+  - Contract entries that are archived or never deployed are reported unavailable, not as proof of absence.
+  - This report is a point-in-time observation. It is not a security rating, audit or endorsement.
