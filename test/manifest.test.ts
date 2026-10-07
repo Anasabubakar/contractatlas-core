@@ -1,8 +1,9 @@
+import { StrKey } from "@stellar/stellar-sdk";
 import { describe, expect, it } from "vitest";
 import { KNOWN_NETWORKS, parseManifest } from "../src/manifest.ts";
 
-const CID_A = "C" + "A".repeat(55);
-const CID_B = "C" + "B".repeat(55);
+const CID_A = StrKey.encodeContract(Buffer.alloc(32, 1));
+const CID_B = StrKey.encodeContract(Buffer.alloc(32, 2));
 const H1 = "a".repeat(64);
 
 function base() {
@@ -51,6 +52,14 @@ describe("parseManifest", () => {
     const m = base();
     m.network = { name: "standalone", passphrase: "Standalone Network ; February 2017" };
     expect(parseManifest(m).ok).toBe(true);
+  });
+
+  it("rejects a contract id with a bad checksum", () => {
+    const m = base();
+    m.contracts[0]!.id = "C" + "A".repeat(55);
+    const r = parseManifest(m);
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.issues[0]?.path).toBe("contracts.0.id");
   });
 
   it("rejects duplicate contract ids", () => {
