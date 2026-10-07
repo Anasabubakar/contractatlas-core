@@ -9,7 +9,7 @@ function base() {
   return {
     schemaVersion: "1",
     protocol: { name: "Demo" },
-    network: { name: "testnet", passphrase: KNOWN_NETWORKS.testnet },
+    network: { name: "testnet", passphrase: KNOWN_NETWORKS.testnet as string },
     contracts: [{ id: CID_A, name: "Vault", declaredWasmHash: H1 }],
   };
 }
