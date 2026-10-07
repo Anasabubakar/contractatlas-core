@@ -1,0 +1,146 @@
+{
+  "reportVersion": "1",
+  "tool": {
+    "name": "contractatlas-core",
+    "version": "0.1.0"
+  },
+  "observedAt": "2026-10-07T13:49:48.573Z",
+  "manifest": {
+    "schemaVersion": "1",
+    "protocol": "ContractAtlas upgradeable fixture",
+    "sha256": "0c2a9379478cce9b8c4403f9ac6f1687decd5c3bfdbab08eabbf65872fd6367c",
+    "network": {
+      "name": "testnet",
+      "passphrase": "Test SDF Network ; September 2015"
+    }
+  },
+  "source": {
+    "rpcOrigin": "https://soroban-testnet.stellar.org",
+    "latestLedger": 5071480,
+    "network": {
+      "status": "match",
+      "expected": "Test SDF Network ; September 2015",
+      "observed": "Test SDF Network ; September 2015"
+    }
+  },
+  "summary": {
+    "match": 1,
+    "drift": 0,
+    "incomplete": 1,
+    "unavailable": 0
+  },
+  "overall": "incomplete",
+  "contracts": [
+    {
+      "id": "CADRVGSPFVDYWRABKTEVETRVCKIADNF4XCQC73OIJPJQZOHG7EPIQ3BD",
+      "name": "Fixture A (artifact-mapped review)",
+      "status": "match",
+      "live": {
+        "kind": "wasm",
+        "wasmHash": "42d30fff6be1b7e59d031879d32aa33fb45e740f035d10e03b13e8474dc7cc92"
+      },
+      "declared": {
+        "wasmHash": "42d30fff6be1b7e59d031879d32aa33fb45e740f035d10e03b13e8474dc7cc92",
+        "sourceCommit": null
+      },
+      "audits": [
+        {
+          "id": "fixture-review-1",
+          "auditor": "Fictional fixture review (not an audit)",
+          "report": "https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/upgradeable-fixture/README.md",
+          "date": "2026-10-07",
+          "coversLiveArtifact": true,
+          "reviewedWasmHashes": [
+            "42d30fff6be1b7e59d031879d32aa33fb45e740f035d10e03b13e8474dc7cc92"
+          ],
+          "reviewedSourceCommit": null,
+          "limitations": [
+            "Fictional entry for exercising the checker. No code was reviewed."
+          ]
+        }
+      ],
+      "declarations": {
+        "privileges": [
+          {
+            "role": "upgrade authority",
+            "holder": "GCB5WODVHS4EGWFQQ477PN3LAFLUM7RMZ7R5FSGIHRDBP34NZA76HLJ2",
+            "description": "Declared by the fixture author. Not verified by ContractAtlas."
+          }
+        ],
+        "dependencies": [],
+        "limitations": [
+          "Test fixture. Not for production use."
+        ]
+      },
+      "findings": [
+        {
+          "code": "live_artifact_in_audit_scope",
+          "severity": "info",
+          "message": "The live WASM hash equals a hash that at least one referenced audit lists as reviewed. This does not establish that the audit covered dependencies, configuration or privileged roles.",
+          "evidence": {
+            "liveWasmHash": "42d30fff6be1b7e59d031879d32aa33fb45e740f035d10e03b13e8474dc7cc92"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CD2FBDVYS6TBDZNJPRUBVEY7TNCFJX36QJ6KQCUHXWG4IFFSR7J2EIZH",
+      "name": "Fixture B (source-commit-only review)",
+      "status": "incomplete",
+      "live": {
+        "kind": "wasm",
+        "wasmHash": "42d30fff6be1b7e59d031879d32aa33fb45e740f035d10e03b13e8474dc7cc92"
+      },
+      "declared": {
+        "wasmHash": "42d30fff6be1b7e59d031879d32aa33fb45e740f035d10e03b13e8474dc7cc92",
+        "sourceCommit": "3bb223a6360a15c3e2600131af9ac75d6015cc08"
+      },
+      "audits": [
+        {
+          "id": "fixture-review-2",
+          "auditor": "Fictional fixture review (not an audit)",
+          "report": "https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/upgradeable-fixture/README.md",
+          "date": "2026-10-07",
+          "coversLiveArtifact": false,
+          "reviewedWasmHashes": [],
+          "reviewedSourceCommit": "3bb223a6360a15c3e2600131af9ac75d6015cc08",
+          "limitations": [
+            "Identifies source only. No reliable mapping from this commit to a deployed WASM artifact."
+          ]
+        }
+      ],
+      "declarations": {
+        "privileges": [],
+        "dependencies": [],
+        "limitations": [
+          "Test fixture. Not for production use."
+        ]
+      },
+      "findings": [
+        {
+          "code": "audit_scope_unmapped_to_artifact",
+          "severity": "warning",
+          "message": "The referenced audits identify reviewed source only, not a WASM artifact. Without a reliable source-to-artifact mapping the live code's audit coverage is unresolved.",
+          "evidence": {
+            "liveWasmHash": "42d30fff6be1b7e59d031879d32aa33fb45e740f035d10e03b13e8474dc7cc92"
+          }
+        },
+        {
+          "code": "declared_source_commit_unverified",
+          "severity": "info",
+          "message": "A declared source commit is recorded but this tool does not rebuild source or verify it against the deployed WASM.",
+          "evidence": {
+            "commit": "3bb223a6360a15c3e2600131af9ac75d6015cc08"
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "A match means the live WASM hash equals a hash an audit lists as reviewed. It does not mean the audit covered dependencies, deployment configuration or privileged roles.",
+    "Privileges, dependencies and limitations are declarations copied from the manifest. They are not verified by this tool.",
+    "A source commit is not compared with deployed code. Without an artifact hash mapping, audit coverage stays unresolved.",
+    "Contract entries that are archived or never deployed are reported unavailable, not as proof of absence.",
+    "This report is a point-in-time observation. It is not a security rating, audit or endorsement."
+  ]
+}
