@@ -28,6 +28,7 @@ export interface Finding {
 export type LiveObservation =
   | { kind: "wasm"; wasmHash: string }
   | { kind: "stellar_asset" }
+  | { kind: "other_executable"; detail: string }
   | { kind: "not_live"; detail: string }
   | { kind: "unavailable"; detail: string };
 
@@ -38,6 +39,7 @@ export interface ContractResult {
   live:
     | { kind: "wasm"; wasmHash: string }
     | { kind: "stellar_asset" }
+    | { kind: "other_executable"; detail: string }
     | { kind: "not_live" }
     | { kind: "unavailable" };
   declared: { wasmHash: string | null; sourceCommit: string | null };
