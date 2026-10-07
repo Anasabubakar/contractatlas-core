@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1",
+  "protocol": {
+    "name": "ContractAtlas upgradeable fixture",
+    "homepage": "https://github.com/Anasabubakar/contractatlas-core",
+    "description": "Controlled testnet fixture. Not a real protocol. The audit entries are fictional labels used to exercise the checker; they are not professional audits."
+  },
+  "network": { "name": "testnet", "passphrase": "Test SDF Network ; September 2015" },
+  "contracts": [
+    {
+      "id": "CADRVGSPFVDYWRABKTEVETRVCKIADNF4XCQC73OIJPJQZOHG7EPIQ3BD",
+      "name": "Fixture A (artifact-mapped review)",
+      "declaredWasmHash": "42d30fff6be1b7e59d031879d32aa33fb45e740f035d10e03b13e8474dc7cc92",
+      "audits": [
+        {
+          "id": "fixture-review-1",
+          "auditor": "Fictional fixture review (not an audit)",
+          "report": "https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/upgradeable-fixture/README.md",
+          "date": "2026-10-07",
+          "reviewedWasmHashes": ["42d30fff6be1b7e59d031879d32aa33fb45e740f035d10e03b13e8474dc7cc92"],
+          "limitations": ["Fictional entry for exercising the checker. No code was reviewed."]
+        }
+      ],
+      "privileges": [
+        { "role": "upgrade authority", "holder": "GCB5WODVHS4EGWFQQ477PN3LAFLUM7RMZ7R5FSGIHRDBP34NZA76HLJ2", "description": "Declared by the fixture author. Not verified by ContractAtlas." }
+      ],
+      "limitations": ["Test fixture. Not for production use."]
+    },
+    {
+      "id": "CD2FBDVYS6TBDZNJPRUBVEY7TNCFJX36QJ6KQCUHXWG4IFFSR7J2EIZH",
+      "name": "Fixture B (source-commit-only review)",
+      "declaredWasmHash": "42d30fff6be1b7e59d031879d32aa33fb45e740f035d10e03b13e8474dc7cc92",
+      "declaredSourceCommit": {
+        "repository": "https://github.com/Anasabubakar/contractatlas-core",
+        "commit": "3bb223a6360a15c3e2600131af9ac75d6015cc08"
+      },
+      "audits": [
+        {
+          "id": "fixture-review-2",
+          "auditor": "Fictional fixture review (not an audit)",
+          "report": "https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/upgradeable-fixture/README.md",
+          "date": "2026-10-07",
+          "reviewedSourceCommit": {
+            "repository": "https://github.com/Anasabubakar/contractatlas-core",
+            "commit": "3bb223a6360a15c3e2600131af9ac75d6015cc08"
+          },
+          "limitations": ["Identifies source only. No reliable mapping from this commit to a deployed WASM artifact."]
+        }
+      ],
+      "limitations": ["Test fixture. Not for production use."]
+    }
+  ]
+}
