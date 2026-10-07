@@ -1,3 +1,4 @@
+import { StrKey } from "@stellar/stellar-sdk";
 import { z } from "zod";
 
 export const MANIFEST_SCHEMA_VERSION = "1" as const;
@@ -14,9 +15,11 @@ const hex64 = z
 
 const gitCommit = z.string().regex(/^[0-9a-f]{40}$/, "must be a full 40-character lowercase git commit hash");
 
-const contractId = z.string().regex(/^C[A-Z2-7]{55}$/, "must be a Stellar contract address (C..., 56 characters)");
+const contractId = z.string().refine((v) => StrKey.isValidContract(v), "must be a valid Stellar contract address (C..., correct checksum)");
 
-const accountOrContract = z.string().regex(/^[GC][A-Z2-7]{55}$/, "must be a Stellar G... or C... address");
+const accountOrContract = z
+  .string()
+  .refine((v) => StrKey.isValidEd25519PublicKey(v) || StrKey.isValidContract(v), "must be a valid Stellar G... or C... address");
 
 const httpsUrl = z.url({ protocol: /^https$/, hostname: z.regexes.domain });
 
