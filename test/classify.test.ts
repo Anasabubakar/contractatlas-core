@@ -1,9 +1,10 @@
+import { StrKey } from "@stellar/stellar-sdk";
 import { describe, expect, it } from "vitest";
 import { classifyContract, worstStatus } from "../src/classify.ts";
 import { parseManifest, type ContractEntry } from "../src/manifest.ts";
 import { KNOWN_NETWORKS } from "../src/manifest.ts";
 
-const CID = "C" + "A".repeat(55);
+const CID = StrKey.encodeContract(Buffer.alloc(32, 1));
 const H_OLD = "1".repeat(64);
 const H_NEW = "2".repeat(64);
 const COMMIT = "c".repeat(40);
@@ -92,7 +93,7 @@ describe("classifyContract", () => {
   });
 
   it("copies privilege declarations without verifying them", () => {
-    const holder = "G" + "A".repeat(55);
+    const holder = StrKey.encodeEd25519PublicKey(Buffer.alloc(32, 3));
     const r = classifyContract(
       entry({ declaredWasmHash: H_OLD, audits: [audit()], privileges: [{ role: "upgrade authority", holder }] }),
       { kind: "wasm", wasmHash: H_OLD },
