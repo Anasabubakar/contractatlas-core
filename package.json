@@ -1,0 +1,36 @@
+{
+  "name": "@anasabubakar/contractatlas-core",
+  "version": "0.1.0",
+  "description": "Check a Soroban protocol's live deployments against its declared audit scope. Manifest schema, checker, CLI and CI integration.",
+  "license": "MIT",
+  "author": "Anas Abubakar",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "packageManager": "pnpm@11.25.0",
+  "bin": { "contractatlas": "./dist/cli.js" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./schema/manifest.v1.schema.json": "./schema/manifest.v1.schema.json",
+    "./schema/report.v1.schema.json": "./schema/report.v1.schema.json"
+  },
+  "files": ["dist", "schema", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node scripts/postbuild.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "schema": "node --experimental-strip-types scripts/gen-schema.ts",
+    "check:schema": "node --experimental-strip-types scripts/gen-schema.ts --check"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "17.2.1",
+    "commander": "15.0.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.4",
+    "typescript": "7.0.2",
+    "vitest": "5.0.3"
+  }
+}
