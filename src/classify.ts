@@ -15,6 +15,8 @@ function liveForResult(obs: LiveObservation): ContractResult["live"] {
       return { kind: "wasm", wasmHash: obs.wasmHash };
     case "stellar_asset":
       return { kind: "stellar_asset" };
+    case "other_executable":
+      return { kind: "other_executable", detail: obs.detail };
     case "not_live":
       return { kind: "not_live" };
     case "unavailable":
@@ -66,7 +68,7 @@ function baseResult(entry: ContractEntry, obs: LiveObservation): ContractResult 
  * Rules, in order:
  *  - the ledger could not answer             -> unavailable (never a mismatch)
  *  - the instance entry is not live          -> unavailable (it may be archived or never deployed; absence is not proven)
- *  - the executable is a Stellar Asset Contract -> incomplete (there is no WASM artifact to compare)
+ *  - the executable is not WASM (SAC or other) -> incomplete (there is no WASM artifact to compare)
  *  - no declared WASM hash                   -> incomplete
  *  - live hash differs from declared hash    -> drift
  *  - hash matches declared:
@@ -92,11 +94,13 @@ export function classifyContract(entry: ContractEntry, obs: LiveObservation): Co
     result.status = "unavailable";
     return result;
   }
-  if (obs.kind === "stellar_asset") {
+  if (obs.kind === "stellar_asset" || obs.kind === "other_executable") {
+    const what =
+      obs.kind === "stellar_asset" ? "the built-in Stellar Asset Contract" : `an executable of kind ${obs.detail}`;
     add({
       code: "executable_not_wasm",
       severity: "warning",
-      message: "The contract's executable is the built-in Stellar Asset Contract, so there is no WASM artifact to compare with a declared hash.",
+      message: `The contract's executable is ${what}, so there is no WASM artifact to compare with a declared hash.`,
     });
     result.status = "incomplete";
     return result;
