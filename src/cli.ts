@@ -1,5 +1,7 @@
 #!/usr/bin/env node
+import { realpathSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
+import { pathToFileURL } from "node:url";
 import { Command, CommanderError, InvalidArgumentError } from "commander";
 import { checkManifest } from "./check.ts";
 import { RpcLedgerSource } from "./ledger.ts";
@@ -123,7 +125,7 @@ export async function runCli(argv: string[], io: CliIo): Promise<number> {
   return exit;
 }
 
-const invokedDirectly = process.argv[1] !== undefined && import.meta.url === new URL(`file://${process.argv[1]}`).href;
+const invokedDirectly = process.argv[1] !== undefined && import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href;
 if (invokedDirectly) {
   runCli(process.argv.slice(2), {
     stdout: (s) => process.stdout.write(s),
