@@ -83,8 +83,8 @@ export class RpcLedgerSource implements LedgerSource {
   }
 
   async getLatestLedger(): Promise<number> {
-    const l = await withTimeout(this.server.getLatestLedger(), this.timeoutMs, "getLatestLedger");
-    return l.sequence;
+    const h = await withTimeout(this.server.getHealth(), this.timeoutMs, "getHealth");
+    return h.latestLedger;
   }
 
   async getExecutable(contractId: string): Promise<LiveObservation> {
