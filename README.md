@@ -19,7 +19,7 @@ No safety score, no "audited" label, no inference of privileged roles (they are 
 
 ## Install and run
 
-Not yet published to npm. From a clone (Node 22 or newer, pnpm):
+Published to npm as `@anas.abubakar/contractatlas-core` (`npm install @anas.abubakar/contractatlas-core`). To work from source: From a clone (Node 22 or newer, pnpm):
 
 ```bash
 git clone https://github.com/Anasabubakar/contractatlas-core.git
