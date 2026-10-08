@@ -90,3 +90,9 @@ Status: v0.1, engineering complete for the declared scope. No maintainer has rev
 ## License
 
 MIT. See [LICENSE](https://github.com/Anasabubakar/contractatlas-core/blob/main/LICENSE). Contributing: [CONTRIBUTING.md](https://github.com/Anasabubakar/contractatlas-core/blob/main/CONTRIBUTING.md). Security: [SECURITY.md](https://github.com/Anasabubakar/contractatlas-core/blob/main/SECURITY.md).
+
+## Contributors
+
+<a href="https://github.com/Anasabubakar/contractatlas-core/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Anasabubakar/contractatlas-core" alt="Contributors to contractatlas-core" />
+</a>
