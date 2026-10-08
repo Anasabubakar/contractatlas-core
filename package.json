@@ -1,6 +1,6 @@
 {
   "name": "@anas.abubakar/contractatlas-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Check a Soroban protocol's live deployments against its declared audit scope. Manifest schema, checker, CLI and CI integration.",
   "license": "MIT",
   "author": "Anas Abubakar",
@@ -45,5 +45,13 @@
     "@types/node": "26.6.4",
     "typescript": "7.0.2",
     "vitest": "5.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anasabubakar/contractatlas-core.git"
+  },
+  "homepage": "https://github.com/Anasabubakar/contractatlas-core#readme",
+  "bugs": {
+    "url": "https://github.com/Anasabubakar/contractatlas-core/issues"
   }
 }
