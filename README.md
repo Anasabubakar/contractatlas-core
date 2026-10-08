@@ -1,5 +1,7 @@
 # contractatlas-core
 
+**Documentation:** https://stellar-developer-tools.gitbook.io/contractatlas-core/
+
 A protocol's audit should not silently describe yesterday's code.
 
 ContractAtlas compares what is **live on a Soroban network** with what a protocol **declares in a manifest**: the expected WASM hash for each contract and the audit references that list reviewed artifacts. It reports one of four states per contract and renders the same report in a terminal, in CI and (via [contractatlas-studio](https://github.com/Anasabubakar/contractatlas-studio)) on a public page.
