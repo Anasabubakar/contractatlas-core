@@ -1,5 +1,5 @@
 {
-  "name": "@anasabubakar/contractatlas-core",
+  "name": "@anas.abubakar/contractatlas-core",
   "version": "0.1.0",
   "description": "Check a Soroban protocol's live deployments against its declared audit scope. Manifest schema, checker, CLI and CI integration.",
   "license": "MIT",
