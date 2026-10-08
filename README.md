@@ -1,10 +1,15 @@
+<p align="center"><img src="docs/assets/banner.svg" alt="contractatlas-core" width="100%"></p>
+
 # contractatlas-core
 
-**Documentation:** https://stellar-developer-tools.gitbook.io/contractatlas-core/
+[![CI](https://github.com/Contract-Atlas/contractatlas-core/actions/workflows/ci.yml/badge.svg)](https://github.com/Contract-Atlas/contractatlas-core/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Release](https://img.shields.io/github/v/release/Contract-Atlas/contractatlas-core)](https://github.com/Contract-Atlas/contractatlas-core/releases) [![npm](https://img.shields.io/npm/v/@anas.abubakar/contractatlas-core)](https://www.npmjs.com/package/@anas.abubakar/contractatlas-core)
+
+[Documentation](https://stellar-developer-tools.gitbook.io/contractatlas-core/) · [App repository](https://github.com/Contract-Atlas/contractatlas-studio) · [Issues](https://github.com/Contract-Atlas/contractatlas-core/issues) · [Discussions](https://github.com/Contract-Atlas/contractatlas-core/discussions)
+
 
 A protocol's audit should not silently describe yesterday's code.
 
-ContractAtlas compares what is **live on a Soroban network** with what a protocol **declares in a manifest**: the expected WASM hash for each contract and the audit references that list reviewed artifacts. It reports one of four states per contract and renders the same report in a terminal, in CI and (via [contractatlas-studio](https://github.com/Anasabubakar/contractatlas-studio)) on a public page.
+ContractAtlas compares what is **live on a Soroban network** with what a protocol **declares in a manifest**: the expected WASM hash for each contract and the audit references that list reviewed artifacts. It reports one of four states per contract and renders the same report in a terminal, in CI and (via [contractatlas-studio](https://github.com/Contract-Atlas/contractatlas-studio)) on a public page.
 
 | Status | Meaning |
 |---|---|
@@ -17,14 +22,14 @@ A failed read is never reported as drift, and a missing artifact mapping is neve
 
 ## What it does not do
 
-No safety score, no "audited" label, no inference of privileged roles (they are declarations you write), no source rebuild. A match means the deployed hash equals a hash an audit says it reviewed. It does not mean the audit covered dependencies, configuration or roles. See [SPEC.md](https://github.com/Anasabubakar/contractatlas-core/blob/main/SPEC.md) and [ADR 0001](https://github.com/Anasabubakar/contractatlas-core/blob/main/docs/adr/0001-incremental-value-over-existing-tools.md) for how this compares with Stellar Lab and others.
+No safety score, no "audited" label, no inference of privileged roles (they are declarations you write), no source rebuild. A match means the deployed hash equals a hash an audit says it reviewed. It does not mean the audit covered dependencies, configuration or roles. See [SPEC.md](https://github.com/Contract-Atlas/contractatlas-core/blob/main/SPEC.md) and [ADR 0001](https://github.com/Contract-Atlas/contractatlas-core/blob/main/docs/adr/0001-incremental-value-over-existing-tools.md) for how this compares with Stellar Lab and others.
 
 ## Install and run
 
 Published to npm as `@anas.abubakar/contractatlas-core` (`npm install @anas.abubakar/contractatlas-core`). To work from source: From a clone (Node 22 or newer, pnpm):
 
 ```bash
-git clone https://github.com/Anasabubakar/contractatlas-core.git
+git clone https://github.com/Contract-Atlas/contractatlas-core.git
 cd contractatlas-core
 pnpm install --frozen-lockfile
 pnpm build
@@ -64,12 +69,12 @@ JSON Schemas: `schema/manifest.v1.schema.json` and `schema/report.v1.schema.json
 
 ## Demo: a real testnet upgrade
 
-`fixtures/testnet` holds a manifest for two contracts deployed on testnet from [`fixtures/upgradeable-fixture`](https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/upgradeable-fixture/README.md) and two recorded reports from real runs:
+`fixtures/testnet` holds a manifest for two contracts deployed on testnet from [`fixtures/upgradeable-fixture`](https://github.com/Contract-Atlas/contractatlas-core/blob/main/fixtures/upgradeable-fixture/README.md) and two recorded reports from real runs:
 
-1. [`01-before-upgrade`](https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/testnet/reports/01-before-upgrade.txt): fixture A is `match`; fixture B, whose review names a source commit only, is `incomplete`.
-2. After a real on-chain `upgrade` transaction, [`02-after-upgrade`](https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/testnet/reports/02-after-upgrade.txt): fixture A is `drift` and the CLI exits 1. The audit link is retained but no longer covers the live code.
+1. [`01-before-upgrade`](https://github.com/Contract-Atlas/contractatlas-core/blob/main/fixtures/testnet/reports/01-before-upgrade.txt): fixture A is `match`; fixture B, whose review names a source commit only, is `incomplete`.
+2. After a real on-chain `upgrade` transaction, [`02-after-upgrade`](https://github.com/Contract-Atlas/contractatlas-core/blob/main/fixtures/testnet/reports/02-after-upgrade.txt): fixture A is `drift` and the CLI exits 1. The audit link is retained but no longer covers the live code.
 
-Contract IDs, hashes and transactions: [DEPLOYMENT.md](https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/testnet/DEPLOYMENT.md). The "audits" in the fixture are fictional labels, not professional audits. The contracts are permanently in the post-upgrade state, so a fresh run reproduces report 02.
+Contract IDs, hashes and transactions: [DEPLOYMENT.md](https://github.com/Contract-Atlas/contractatlas-core/blob/main/fixtures/testnet/DEPLOYMENT.md). The "audits" in the fixture are fictional labels, not professional audits. The contracts are permanently in the post-upgrade state, so a fresh run reproduces report 02.
 
 ## Supported versions
 
@@ -89,12 +94,43 @@ pnpm test:live       # opt-in: hits testnet and asserts the fixture is in its po
 
 Status: v0.1, engineering complete for the declared scope. No maintainer has reviewed a real manifest yet; that adoption check is tracked separately from the code.
 
+## Repository layout
+
+- `docs/`: decision records (ADRs), evidence and assets
+- `fixtures/`: recorded and fixture data used by the tests
+- `gitbook/`: source of the GitBook documentation
+- `schema/`: JSON Schemas, generated and checked in CI
+- `scripts/`: build, generation and recording scripts
+- `src/`: source
+- `test/`: tests
+
+## Documentation
+
+The full documentation is at https://stellar-developer-tools.gitbook.io/contractatlas-core/. It is built from the `gitbook/` folder of this repository and synced from `main`, so a fix to a page is a pull request here.
+
+## Contributing
+
+Open issues are scoped so one person can finish one in a single cycle, and each lists acceptance criteria. Read [CONTRIBUTING.md](CONTRIBUTING.md), pick an issue from the [issue list](https://github.com/Contract-Atlas/contractatlas-core/issues), and say you are taking it before you start. Security reports go through [SECURITY.md](SECURITY.md), not public issues.
+
+## Maintainers
+
+| Maintainer | Role | GitHub |
+|---|---|---|
+| Anas Abubakar | Lead maintainer | [@Anasabubakar](https://github.com/Anasabubakar) |
+| Abdulbasit Fazazi | Co-maintainer | [@fazaziishola-coder](https://github.com/fazaziishola-coder) |
+
+## Community
+
+Questions and design discussion go in [GitHub Discussions](https://github.com/Contract-Atlas/contractatlas-core/discussions). Bugs and scoped work go in [Issues](https://github.com/Contract-Atlas/contractatlas-core/issues).
+
 ## License
 
-MIT. See [LICENSE](https://github.com/Anasabubakar/contractatlas-core/blob/main/LICENSE). Contributing: [CONTRIBUTING.md](https://github.com/Anasabubakar/contractatlas-core/blob/main/CONTRIBUTING.md). Security: [SECURITY.md](https://github.com/Anasabubakar/contractatlas-core/blob/main/SECURITY.md).
+MIT. See [LICENSE](https://github.com/Contract-Atlas/contractatlas-core/blob/main/LICENSE). Contributing: [CONTRIBUTING.md](https://github.com/Contract-Atlas/contractatlas-core/blob/main/CONTRIBUTING.md). Security: [SECURITY.md](https://github.com/Contract-Atlas/contractatlas-core/blob/main/SECURITY.md).
 
 ## Contributors
 
-<a href="https://github.com/Anasabubakar/contractatlas-core/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Anasabubakar/contractatlas-core" alt="Contributors to contractatlas-core" />
+Thanks to all the contributors who have made this project possible.
+
+<a href="https://github.com/Contract-Atlas/contractatlas-core/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Contract-Atlas/contractatlas-core" alt="Contributors to contractatlas-core" />
 </a>
