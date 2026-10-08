@@ -15,7 +15,7 @@ A failed read is never reported as drift, and a missing artifact mapping is neve
 
 ## What it does not do
 
-No safety score, no "audited" label, no inference of privileged roles (they are declarations you write), no source rebuild. A match means the deployed hash equals a hash an audit says it reviewed. It does not mean the audit covered dependencies, configuration or roles. See [SPEC.md](SPEC.md) and [ADR 0001](docs/adr/0001-incremental-value-over-existing-tools.md) for how this compares with Stellar Lab and others.
+No safety score, no "audited" label, no inference of privileged roles (they are declarations you write), no source rebuild. A match means the deployed hash equals a hash an audit says it reviewed. It does not mean the audit covered dependencies, configuration or roles. See [SPEC.md](https://github.com/Anasabubakar/contractatlas-core/blob/main/SPEC.md) and [ADR 0001](https://github.com/Anasabubakar/contractatlas-core/blob/main/docs/adr/0001-incremental-value-over-existing-tools.md) for how this compares with Stellar Lab and others.
 
 ## Install and run
 
@@ -62,12 +62,12 @@ JSON Schemas: `schema/manifest.v1.schema.json` and `schema/report.v1.schema.json
 
 ## Demo: a real testnet upgrade
 
-`fixtures/testnet` holds a manifest for two contracts deployed on testnet from [`fixtures/upgradeable-fixture`](fixtures/upgradeable-fixture/README.md) and two recorded reports from real runs:
+`fixtures/testnet` holds a manifest for two contracts deployed on testnet from [`fixtures/upgradeable-fixture`](https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/upgradeable-fixture/README.md) and two recorded reports from real runs:
 
-1. [`01-before-upgrade`](fixtures/testnet/reports/01-before-upgrade.txt): fixture A is `match`; fixture B, whose review names a source commit only, is `incomplete`.
-2. After a real on-chain `upgrade` transaction, [`02-after-upgrade`](fixtures/testnet/reports/02-after-upgrade.txt): fixture A is `drift` and the CLI exits 1. The audit link is retained but no longer covers the live code.
+1. [`01-before-upgrade`](https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/testnet/reports/01-before-upgrade.txt): fixture A is `match`; fixture B, whose review names a source commit only, is `incomplete`.
+2. After a real on-chain `upgrade` transaction, [`02-after-upgrade`](https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/testnet/reports/02-after-upgrade.txt): fixture A is `drift` and the CLI exits 1. The audit link is retained but no longer covers the live code.
 
-Contract IDs, hashes and transactions: [DEPLOYMENT.md](fixtures/testnet/DEPLOYMENT.md). The "audits" in the fixture are fictional labels, not professional audits. The contracts are permanently in the post-upgrade state, so a fresh run reproduces report 02.
+Contract IDs, hashes and transactions: [DEPLOYMENT.md](https://github.com/Anasabubakar/contractatlas-core/blob/main/fixtures/testnet/DEPLOYMENT.md). The "audits" in the fixture are fictional labels, not professional audits. The contracts are permanently in the post-upgrade state, so a fresh run reproduces report 02.
 
 ## Supported versions
 
@@ -89,4 +89,4 @@ Status: v0.1, engineering complete for the declared scope. No maintainer has rev
 
 ## License
 
-MIT. See [LICENSE](LICENSE). Contributing: [CONTRIBUTING.md](CONTRIBUTING.md). Security: [SECURITY.md](SECURITY.md).
+MIT. See [LICENSE](https://github.com/Anasabubakar/contractatlas-core/blob/main/LICENSE). Contributing: [CONTRIBUTING.md](https://github.com/Anasabubakar/contractatlas-core/blob/main/CONTRIBUTING.md). Security: [SECURITY.md](https://github.com/Anasabubakar/contractatlas-core/blob/main/SECURITY.md).
